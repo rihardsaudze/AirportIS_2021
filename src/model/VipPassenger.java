@@ -1,15 +1,19 @@
 package model;
 
+import enums.IdenType;
+import enums.Nationality;
+
 public class VipPassenger extends Passenger {
 	private int vipNr;
 	private String loungeCardNr;
+	private static int idCounter = 0;
 	
 	public int getVipNr() {
 		return vipNr;
 	}
 	
-	public void setVipNr(int vipNr) {
-		this.vipNr = vipNr;
+	public void setVipNr() {
+		this.vipNr = idCounter++;
 	}
 	
 	public String getLoungeCardNr() {
@@ -22,13 +26,13 @@ public class VipPassenger extends Passenger {
 
 	public VipPassenger() {
 		super();
-		this.vipNr = 0;
+		this.vipNr = idCounter++;
 		this.loungeCardNr = "";
 	}
 	
-	public VipPassenger(String name, String surname, String idenNr, IdenType idType, Nationality nation, boolean isAdult, String extraNeeds, int vipNr, String loungeCardNr) {
+	public VipPassenger(String name, String surname, String idenNr, IdenType idType, Nationality nation, boolean isAdult, String extraNeeds, String loungeCardNr) {
 		super(name, surname, idenNr, idType, nation, isAdult, extraNeeds);
-		this.vipNr = vipNr;
+		this.vipNr = idCounter++;
 		this.loungeCardNr = loungeCardNr;
 	}
 

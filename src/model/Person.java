@@ -1,5 +1,9 @@
 package model;
 
+import enums.IdenType;
+import enums.Nationality;
+import utils.DataVerification;
+
 public class Person {
 	private String name;
 	private String surname;
@@ -12,7 +16,11 @@ public class Person {
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		if (name != null) {
+			this.name = DataVerification.nameAndSurnameVerification(name);
+		} else {
+			this.name = "";
+		}
 	}
 	
 	public String getSurname() {
@@ -20,7 +28,11 @@ public class Person {
 	}
 	
 	public void setSurname(String surname) {
-		this.surname = surname;
+		if (surname != null) {
+			this.surname = DataVerification.nameAndSurnameVerification(surname);
+		} else {
+			this.surname = "";
+		}
 	}
 	
 	public String getIdenNr() {
@@ -58,8 +70,8 @@ public class Person {
 	
 	public Person(String name, String surname, String idenNr, IdenType idType, Nationality nation) {
 		super();
-		this.name = name;
-		this.surname = surname;
+		setName(name);
+		setSurname(surname);
 		this.idenNr = idenNr;
 		this.idType = idType;
 		this.nation = nation;

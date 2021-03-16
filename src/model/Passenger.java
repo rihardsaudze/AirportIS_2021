@@ -1,5 +1,8 @@
 package model;
 
+import enums.IdenType;
+import enums.Nationality;
+
 public class Passenger extends Person {
 	private boolean isAdult;
 	private String extraNeeds;

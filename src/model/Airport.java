@@ -1,5 +1,7 @@
 package model;
+
 import enums.AirportName;
+import utils.IdNumberGenerator;
 
 public class Airport {
 	private AirportName name;
@@ -18,8 +20,18 @@ public class Airport {
 		return airportNr;
 	}
 
-	public void setAirportNr(String airportNr) {
-		this.airportNr = airportNr;
+	private void setAirportNr() {
+		if (this.name == AirportName.BARSELONA) {
+			this.airportNr = "BAR" + IdNumberGenerator.generateNr("airportNr");
+		} else if (name == AirportName.OSLO) {
+			this.airportNr = "OSL" + IdNumberGenerator.generateNr("airportNr");
+		} else if (name == AirportName.RIGA) {
+			this.airportNr = "RIG" + IdNumberGenerator.generateNr("airportNr");
+		} else if (name == AirportName.TALLINN) {
+			this.airportNr = "TAL" + IdNumberGenerator.generateNr("airportNr");
+		} else {
+			this.airportNr = "";
+		}
 	}
 	
 	public int getCapacity() {
@@ -32,13 +44,13 @@ public class Airport {
 
 	public Airport() {
 		this.name = AirportName.BARSELONA;
-		this.airportNr = "";
+		setAirportNr();
 		this.capacity = 0;
 	}
 	
-	public Airport(AirportName name, String airportNr, int capacity) {
+	public Airport(AirportName name, int capacity) {
 		this.name = name;
-		this.airportNr = airportNr;
+		setAirportNr();
 		this.capacity = capacity;
 	}	
 }

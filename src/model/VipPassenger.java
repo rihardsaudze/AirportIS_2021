@@ -2,6 +2,7 @@ package model;
 
 import enums.IdenType;
 import enums.Nationality;
+import utils.IdNumberGenerator;
 
 public class VipPassenger extends Passenger {
 	private int vipNr;
@@ -12,7 +13,7 @@ public class VipPassenger extends Passenger {
 		return vipNr;
 	}
 	
-	public void setVipNr() {
+	private void setVipNr() {
 		this.vipNr = idCounter++;
 	}
 	
@@ -26,13 +27,13 @@ public class VipPassenger extends Passenger {
 
 	public VipPassenger() {
 		super();
-		this.vipNr = idCounter++;
+		setVipNr();
 		this.loungeCardNr = "";
 	}
 	
 	public VipPassenger(String name, String surname, String idenNr, IdenType idType, Nationality nation, boolean isAdult, String extraNeeds, String loungeCardNr) {
 		super(name, surname, idenNr, idType, nation, isAdult, extraNeeds);
-		this.vipNr = idCounter++;
+		setVipNr();
 		this.loungeCardNr = loungeCardNr;
 	}
 
